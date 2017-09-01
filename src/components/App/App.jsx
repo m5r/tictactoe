@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Grid } from '../Grid';
+import { Header } from '../Header';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      grid: [],
+    };
+  }
+
   render() {
     return (
       <div className='App'>
-        <header>
-          <img src={logo} className='logo' alt='logo' />
-          <h2>Welcome to React</h2>
-        </header>
+        <Header />
         <div className='container'>
           <Grid />
         </div>
         <footer>
-          <div className=''>
-          </div>
+          <div className='' />
         </footer>
       </div>
     );

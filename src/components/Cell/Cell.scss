@@ -7,11 +7,14 @@
     width: 40%;
     height: auto;
     margin: auto;
-    fill: $primary-color;
+    fill: $primaryColor;
+    &.isAI {
+      fill: $secondaryColor;
+    }
   }
 }
 
 .cell-2 {
-  border-right: 2px solid $primary-color;
-  border-left: 2px solid $primary-color;
+  border-right: 2px solid $primaryColor;
+  border-left: 2px solid $primaryColor;
 }

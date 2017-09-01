@@ -1,12 +1,20 @@
 [class^="cell-"] {
   display: flex;
-  flex: 0 0 33%; }
-  [class^="cell-"] svg {
-    width: 40%;
-    height: auto;
-    margin: auto;
-    fill: #17b890; }
+  flex: 0 0 33%;
+}
+
+[class^="cell-"] svg {
+  width: 40%;
+  height: auto;
+  margin: auto;
+  fill: #17b890;
+}
+
+[class^="cell-"] svg.isAI {
+  fill: #0b132b;
+}
 
 .cell-2 {
   border-right: 2px solid #17b890;
-  border-left: 2px solid #17b890; }
+  border-left: 2px solid #17b890;
+}
