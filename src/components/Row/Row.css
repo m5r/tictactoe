@@ -1,0 +1,9 @@
+[class^="row-"] {
+  display: flex;
+  flex-flow: row nowrap;
+  grid-column-start: 1;
+  width: 600px; }
+
+.row-2 {
+  border-top: 2px solid #17b890;
+  border-bottom: 2px solid #17b890; }
