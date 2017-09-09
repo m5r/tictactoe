@@ -1,0 +1,48 @@
+@import 'styles/_colors';
+
+footer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin: auto;
+  min-width: 300px;
+  max-width: 875px;
+}
+
+.computer, .message, .user {
+  flex: 0 0 33%;
+}
+
+.computer {
+  color: $secondaryColor;
+
+  span:hover {
+    color: $secondaryColorHover;
+  }
+}
+
+.user {
+  color: $primaryColor;
+
+  span:hover {
+    color: $primaryColorHover;
+  }
+}
+
+.computer, .user {
+  span {
+    cursor: pointer;
+    transition: color .2s ease-out;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  svg {
+    width: 20%;
+    height: auto;
+    fill: currentColor;
+  }
+}
+

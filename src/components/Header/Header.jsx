@@ -1,10 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Sauron } from '../Icons';
 import './Header.css';
 
 export const Header = () => (
   <header>
-    <img src={logo} className='logo' alt='logo' />
-    <h2>Welcome to React</h2>
+    <Sauron className='logo' alt='logo' />
+    <h1>Tic Tac Toe</h1>
   </header>
 );

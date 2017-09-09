@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Circle = props => (
-  <svg className={props.className} xmlns='http://www.w3.org/2000/svg' width='24' height='28' viewBox='0 0 24 28'>
+export const Circle = ({ className }) => (
+  <svg className={className} height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'>
+    <path d='M0 0h24v24H0z' fill='none' />
     <path
-      d='M12 5.5c-4.688 0-8.5 3.813-8.5 8.5s3.813 8.5 8.5 8.5 8.5-3.813 8.5-8.5-3.813-8.5-8.5-8.5zM24 14c0 6.625-5.375 12-12 12s-12-5.375-12-12 5.375-12 12-12v0c6.625 0 12 5.375 12 12z'
+      d='M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'
     />
   </svg>
 );
@@ -12,3 +13,8 @@ export const Circle = props => (
 Circle.propTypes = {
   className: PropTypes.string.isRequired,
 };
+
+Circle.defaultProps = {
+  className: '',
+};
+

@@ -1,8 +1,10 @@
-@import "styles/_variables";
-
 .grid {
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(3, $cellWidth);
-  grid-template-rows: repeat(3, $cellWidth);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  flex: 0 1 27%;
+  min-width: 300px;
+  height: 80%;
+  min-height: 300px;
 }

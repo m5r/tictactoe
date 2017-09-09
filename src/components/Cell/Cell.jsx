@@ -4,17 +4,30 @@ import classnames from 'classnames';
 import { Circle, Cross } from '../Icons';
 import './Cell.css';
 
-export const Cell = props => (
-  <div className={`cell-${props.cellNumber}`}>
-    {props.icon === 'circle' ?
-      <Circle className={classnames({ isAI: props.isAI })} /> :
-      <Cross className={classnames({ isAI: props.isAI })} />}
-  </div>
-);
+export const Cell = ({ cellNumber, icon, isAI }) => {
+  let content;
+
+  switch (icon) {
+    case -1:
+      content = <Circle className={classnames({ isAI })} />;
+      break;
+    case 1:
+      content = <Cross className={classnames({ isAI })} />;
+      break;
+    default:
+      content = <div />;
+  }
+
+  return (
+    <div className={`cell-${cellNumber}`}>
+      {content}
+    </div>
+  );
+};
 
 Cell.propTypes = {
   cellNumber: PropTypes.number.isRequired,
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.oneOf([-1, 0, 1]).isRequired,
   isAI: PropTypes.bool,
 };
 

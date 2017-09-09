@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export const Sauron = () => (
-  <svg id='Layer_1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 495.2 495.2'>
+export const Sauron = ({ className }) => (
+  <svg className={className} id='Layer_1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 495.2 495.2'>
     <path
       d='M247.6,250.4c-52,0-96-148.8-113.6-243.2v336c0,25.6,20.8,46.4,46.4,46.4H314 c25.6,0,46.4-20.8,46.4-46.4V7.2C343.6,101.6,299.6,250.4,247.6,250.4z'
       fill='#491e3c'
@@ -115,3 +116,11 @@ export const Sauron = () => (
     <circle cx='242.8' cy='113.6' r='.8' fill='#754167' />
   </svg>
 );
+
+Sauron.propTypes = {
+  className: PropTypes.string,
+};
+
+Sauron.defaultProps = {
+  className: '',
+};
