@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 import './App.css';
 import { Grid } from '../Grid';
 import { Header } from '../Header';
@@ -9,36 +10,49 @@ class App extends Component {
     super(props);
     this.state = {
       board: new Array(9).fill(0),
-      message: 'Who starts?',
       playerIcon: 0,
+      turnPlayer: 0,
     };
   }
 
-  setPlayerIcon(newPlayerIcon) {
-    const newMessage = newPlayerIcon === 1 ? 'Your turn' : 'Wait for it';
-
+  startNewGame(newPlayerIcon) {
     this.setState({
       board: new Array(9).fill(0),
-      message: newMessage,
       playerIcon: newPlayerIcon,
+      turnPlayer: 1,
+    });
+  }
+
+  makeMove(position, player) {
+    this.setState(prevState => {
+      const newBoard = prevState.board;
+      newBoard[position] = player;
+
+      return {
+        board: newBoard,
+        turnPlayer: -prevState.turnPlayer,
+      };
     });
   }
 
   render() {
-    const { board, message, playerIcon } = this.state;
+    const { board, playerIcon, turnPlayer } = this.state;
 
     return (
-      <div className='App'>
+      <div className={classNames('App', { computerTurn: playerIcon !== turnPlayer })}>
         <Header />
         <div className='container'>
           <Grid
             board={board}
             playerIcon={playerIcon}
+            makeMove={(position, player) => this.makeMove(position, player)}
+            turnPlayer={turnPlayer}
           />
         </div>
         <Footer
-          message={message}
-          onSelectIcon={icon => this.setPlayerIcon(icon)}
+          playerIcon={playerIcon}
+          onSelectIcon={icon => this.startNewGame(icon)}
+          turnPlayer={turnPlayer}
         />
       </div>
     );

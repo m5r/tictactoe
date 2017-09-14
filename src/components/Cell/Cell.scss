@@ -6,10 +6,13 @@
     width: 40%;
     height: auto;
     margin: auto;
-    fill: $primaryColor;
     max-width: 65px;
-    &.isAI {
+    fill: $primaryColor;
+    &.computer {
       fill: $secondaryColor;
+    }
+    &.hover {
+      fill: rgba($primaryColor, .3);
     }
   }
 }
@@ -23,4 +26,10 @@
 
 [class^='cell-']:nth-child(-n+6) {
   border-bottom: 1px solid rgba($primaryColor, .5);
+}
+
+.computerTurn {
+  [class^="cell-"] {
+
+  }
 }

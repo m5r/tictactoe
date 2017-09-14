@@ -9,3 +9,19 @@
   margin-top: 10px;
   height: calc(100vh - 360px);
 }
+
+.loading {
+  width: 20%;
+  height: auto;
+  fill: #6f6f6f;
+  animation: spin 2s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
