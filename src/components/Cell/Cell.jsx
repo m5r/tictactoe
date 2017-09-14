@@ -40,12 +40,12 @@ export class Cell extends Component {
   }
 
   render() {
-    const { cellNumber, makeMove } = this.props;
+    const { cellNumber, makeMove, playerIcon, turnPlayer } = this.props;
 
     return (
       <div
         className={`cell-${cellNumber}`}
-        onClick={makeMove}
+        onClick={() => turnPlayer === playerIcon && makeMove()}
         onMouseEnter={() => {
           this.setState({
             hover: true,
