@@ -4,6 +4,7 @@ import './App.css';
 import { Grid } from '../Grid';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
+import { computeBestPossibleMove } from '../../ai/minimax';
 
 class App extends Component {
   constructor(props) {
@@ -13,6 +14,15 @@ class App extends Component {
       playerIcon: 0,
       turnPlayer: 0,
     };
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    const { playerIcon, turnPlayer, board } = nextState;
+
+    if (turnPlayer !== playerIcon) {
+      const positionToMoveTo = computeBestPossibleMove({ board, player: playerIcon });
+      this.makeMove(positionToMoveTo, turnPlayer);
+    }
   }
 
   startNewGame(newPlayerIcon) {
