@@ -5,7 +5,7 @@ import { Circle, Cross } from '../Icons';
 import './Cell.css';
 
 export class Cell extends Component {
-  propTypes = {
+  static propTypes = {
     cellNumber: PropTypes.number.isRequired,
     icon: PropTypes.oneOf([-1, 0, 1]).isRequired,
     playerIcon: PropTypes.oneOf([-1, 0, 1]).isRequired,
