@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import { Computer, Gear, User } from '../Icons';
 import './Footer.css';
 
-export const Footer = ({ playerIcon, onSelectIcon, turnPlayer }) => {
-  const message = playerIcon === 0 ?
-    'Who starts?' :
-    turnPlayer === playerIcon ?
-      'Go.' :
-      <Gear className='loading' />;
+export const Footer = ({ playerIcon, onSelectIcon, turnPlayer, endGameMessage }) => {
+  const message =
+    playerIcon === 0 ?
+      'Who starts?' :
+      endGameMessage ? endGameMessage :
+        turnPlayer === playerIcon ?
+          'Go.' :
+          <Gear className='loading' />;
 
   return (
     <footer>
@@ -35,4 +37,5 @@ Footer.propTypes = {
   playerIcon: PropTypes.oneOf([-1, 0, 1]).isRequired,
   onSelectIcon: PropTypes.func.isRequired,
   turnPlayer: PropTypes.oneOf([-1, 0, 1]).isRequired,
+  endGameMessage: PropTypes.string.isRequired,
 };

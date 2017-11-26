@@ -1,4 +1,4 @@
-import { checkWin, computeBestPossibleMove } from './minimax';
+import { checkWin, computeBestPossibleMove, whoWon } from './minimax';
 
 describe.only('minimax', () => {
   describe('checkWin', () => {
@@ -22,6 +22,29 @@ describe.only('minimax', () => {
       const player = 1;
 
       expect(checkWin({ board, player })).toEqual(false);
+    });
+  });
+
+  describe('whoWon', () => {
+    it('should return the player icon if the player has won', () => {
+      const board = [
+        -1, -1, -1,
+        0, 0, 0,
+        0, 0, 0,
+      ];
+      const player = -1;
+
+      expect(whoWon(board)).toEqual(player);
+    });
+
+    it('should return 0 if it\'s a draw', () => {
+      const board = [
+        -1, -1, 1,
+        1, 1, -1,
+        -1, 1, -1,
+      ];
+
+      expect(whoWon(board)).toEqual(0);
     });
   });
 

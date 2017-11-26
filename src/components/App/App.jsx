@@ -4,7 +4,7 @@ import './App.css';
 import { Grid } from '../Grid';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
-import { computeBestPossibleMove } from '../../ai/minimax';
+import { checkWin, computeBestPossibleMove, emptySpots, whoWon } from '../../ai/minimax';
 
 class App extends Component {
   constructor(props) {
@@ -20,8 +20,10 @@ class App extends Component {
     const { playerIcon, turnPlayer, board } = nextState;
 
     if (turnPlayer !== playerIcon) {
-      const positionToMoveTo = computeBestPossibleMove({ board, player: playerIcon });
-      this.makeMove(positionToMoveTo, turnPlayer);
+      setTimeout(() => {
+        const positionToMoveTo = computeBestPossibleMove({ board, player: playerIcon });
+        this.makeMove(positionToMoveTo, turnPlayer);
+      }, 500);
     }
   }
 
@@ -48,6 +50,20 @@ class App extends Component {
   render() {
     const { board, playerIcon, turnPlayer } = this.state;
 
+    const isGameFinished = checkWin({ board, player: playerIcon }) ||
+      checkWin({ board, player: -playerIcon }) ||
+      emptySpots(board).length === 0;
+    const winner = whoWon(board);
+    const endGameMessage =
+      isGameFinished ?
+        winner === 0 ?
+          'It\'s a draw.' :
+          winner === playerIcon ?
+            'You win.' :
+            'I win.' :
+        null;
+    const playable = isGameFinished ? !isGameFinished : turnPlayer === playerIcon;
+
     return (
       <div className={classNames('App', { computerTurn: playerIcon !== turnPlayer })}>
         <Header />
@@ -56,13 +72,14 @@ class App extends Component {
             board={board}
             playerIcon={playerIcon}
             makeMove={(position, player) => this.makeMove(position, player)}
-            turnPlayer={turnPlayer}
+            playable={playable}
           />
         </div>
         <Footer
           playerIcon={playerIcon}
           onSelectIcon={icon => this.startNewGame(icon)}
           turnPlayer={turnPlayer}
+          endGameMessage={endGameMessage}
         />
       </div>
     );
