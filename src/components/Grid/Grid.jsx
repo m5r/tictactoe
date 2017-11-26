@@ -4,16 +4,19 @@ import { Cell } from '../Cell';
 import './Grid.css';
 
 export const Grid = ({ board, playerIcon, makeMove, playable }) => {
-  const cells = board.map((cell, i) => (
-    <Cell
-      key={`cell-${i + 1}`}
-      icon={cell}
-      playerIcon={playerIcon}
-      cellNumber={i + 1}
-      makeMove={() => makeMove(i, playerIcon)}
-      playable={playable}
-    />
-  ));
+  const cells = board.map((cell, i) => {
+    const playableCell = cell === 0 ? playable : false;
+    return (
+      <Cell
+        key={`cell-${i + 1}`}
+        icon={cell}
+        playerIcon={playerIcon}
+        cellNumber={i + 1}
+        makeMove={() => makeMove(i, playerIcon)}
+        playable={playableCell}
+      />
+    );
+  });
 
   return (
     <div className='grid'>
