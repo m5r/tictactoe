@@ -2,12 +2,15 @@
 
 .App {
   text-align: center;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 .container {
   display: flex;
-  margin-top: 10px;
-  height: calc(100vh - 360px);
+  margin: auto;
+  flex-grow: 1;
 }
 
 .loading {
