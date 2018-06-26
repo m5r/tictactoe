@@ -5,18 +5,20 @@
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  height: 100%;
 }
 
 .container {
   display: flex;
   margin: auto 0;
   flex-grow: 1;
+  height: calc(100% - 140px);
 }
 
 .loading {
   width: 20%;
   height: auto;
-  fill: #6f6f6f;
+  fill: #6F6F6F;
   animation: spin 2s infinite linear;
 }
 
